@@ -1,6 +1,4 @@
 <script>
-	import Header from '$lib/components/main-elements/header.svelte';
-
   export let data;
 </script>
 
