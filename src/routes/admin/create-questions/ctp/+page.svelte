@@ -19,7 +19,11 @@
 
 <article>
   <h1>Complete the Phrase (CTP)</h1>
-  <p>{text}</p>
+  {#if question.textHTML}
+    {@html question.textHTML}
+  {:else}
+    <p>{text}</p>
+  {/if}
 
   <div>
     <input type="text" bind:value={text} on:keydown={debounce}>
