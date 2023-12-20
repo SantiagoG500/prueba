@@ -1,3 +1,3 @@
-export const DefaultQuestion = ((question = '', answers = [], correctAns = '', userAns = '') => {
+export const DefaultQuestion = (question = '', answers = [], correctAns = '', userAns = '') => {
 	return { question, answers, correctAns, userAns };
-})();
+};
