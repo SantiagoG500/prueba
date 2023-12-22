@@ -5,26 +5,27 @@
   import { DefaultQuestion } from '$lib/functions/question-default'
   let questionTxt = ''
   let currentAns = ''
-  let answers = []
+  let answers = new Set()
   let correctAns = ''
 
   let timer;
-  let question = {}
+  let question = DefaultQuestion()
 
-  const addAns = () => {
-    answers = answers.concat(currentAns)
-    console.log(answers);
-  }
-  
-  
   const debounce = ()=>{
     clearTimeout(timer)
 
     timer = setTimeout(() => {
       clearTimeout(timer)
-      
+      question.utils.setQuestion(questionTxt)
       // question  = CompleteTp(text)
     }, 1000);
+  }
+  const addAns = () => {
+    // answers = answers.concat(currentAns)
+    answers = answers.add(currentAns)
+    question.utils.setAnswers(currentAns)
+    console.log(question);
+    currentAns = ''
   }
 
 </script>
@@ -34,7 +35,7 @@
   <div>
     <p>{questionTxt}</p>
     <ul>
-      {#each answers as answer}
+      {#each Array.from(answers) as answer}
         <li>
          {answer}
         </li>
